@@ -14,7 +14,8 @@ let testState = async function(
     action: Action,
     sessionState: SessionState,
     contentState: ContentState,
-    result: Ack, role?: SessionRole,
+    result: Ack,
+    role?: SessionRole,
     sid?: string
 ) {
     let jingle = new SessionManager();
