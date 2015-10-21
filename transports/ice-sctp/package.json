@@ -1,0 +1,35 @@
+{
+  "name": "jingle-transport-ice-sctp",
+  "version": "1.0.0",
+  "description": "Jingle ICE SCTP Transport",
+  "main": "lib/index.js",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-runtime": "^5.8.24",
+    "babel-tape-runner": "^1.2.0",
+    "isparta": "^3.1.0",
+    "istanbul": "^0.3.22",
+    "precommit-hook": "^3.0.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.0",
+    "tslint": "^2.5.0",
+    "typescript": "^1.6.2"
+  },
+  "scripts": {
+    "validate": "npm ls",
+    "lint": "tslint -c .tslintrc -t verbose ./**/*.ts",
+    "ts-compile": "npm run -s lint && tsc -p .",
+    "babel-compile": "babel --optional runtime -sd lib/ src",
+    "compile": "npm run -s ts-compile && npm run -s babel-compile",
+    "clean": "rm -rf src/**.js && rm -rf test/**.js",
+    "test": "npm run -s compile && babel-node ./node_modules/.bin/isparta cover --report text --report html --report lcov test/ | tap-spec",
+    "prepublish": "npm run compile"
+  },
+  "pre-commit": [
+    "validate",
+    "compile",
+    "test"
+  ],
+  "author": "Lance Stout <lance@andyet.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,10 @@
+node_modules
+coverage
+.DS_store
+.vscode
+npm-debug.log
+*.swp
+*.gz
+*.js
+*.d.ts
+*.js.map
